@@ -20,3 +20,15 @@ A workout tracking application built with modern tools and practices, inspired b
 - Workout templates/programs
 - Progress tracking
 - Mobile-first responsive design
+
+## DB Commands
+
+# 1. Edit schema.ts
+
+# 2. Generate migrations
+
+npm run db:generate
+
+# 3. Push changes to database
+
+npm run db:push
