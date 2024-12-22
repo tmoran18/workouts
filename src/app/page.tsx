@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server'
-import { SignOutButton } from '@/components/ui/sign-out-button'
+import { SignOutButton } from '@/components/sign-out-button'
+
 export default async function Home() {
   const supabase = await createClient()
 
@@ -20,14 +21,16 @@ export default async function Home() {
 
   return (
     <main className='p-8'>
-      <h1 className='text-2xl font-bold mb-6'>Workout Dashboard</h1>
+      <h1 className='text-4xl font-extrabold mb-6 font-heading'>
+        Workout Dashboard
+      </h1>
       <div className='py-4 flex items-center justify-between items-center gap-4'>
         <p>Logged in as: {user?.email}</p>
         <SignOutButton />
       </div>
       {/* Exercises Section */}
       <section className='mb-8'>
-        <h2 className='text-xl font-semibold mb-4'>Exercises</h2>
+        <h2 className='text-xl font-semibold mb-4 font-heading'>Exercises</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {exercises?.map(exercise => (
             <div key={exercise.id} className='border p-4 rounded'>
@@ -42,7 +45,9 @@ export default async function Home() {
 
       {/* Templates Section */}
       <section className='mb-8'>
-        <h2 className='text-xl font-semibold mb-4'>Workout Templates</h2>
+        <h2 className='text-xl font-semibold mb-4 font-heading'>
+          Workout Templates
+        </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {templates?.map(template => (
             <div key={template.id} className='border p-4 rounded'>
@@ -56,7 +61,9 @@ export default async function Home() {
 
       {/* Workouts Section */}
       <section className='mb-8'>
-        <h2 className='text-xl font-semibold mb-4'>Completed Workouts</h2>
+        <h2 className='text-xl font-semibold mb-4 font-heading'>
+          Completed Workouts
+        </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {workouts?.map(workout => (
             <div key={workout.id} className='border p-4 rounded'>
@@ -76,7 +83,9 @@ export default async function Home() {
 
       {/* Exercise Logs Section */}
       <section className='mb-8'>
-        <h2 className='text-xl font-semibold mb-4'>Exercise Logs</h2>
+        <h2 className='text-xl font-semibold mb-4 font-heading'>
+          Exercise Logs
+        </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {exerciseLogs?.map(log => (
             <div key={log.id} className='border p-4 rounded'>

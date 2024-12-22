@@ -18,7 +18,7 @@ export function SignOutButton() {
   }
 
   return (
-    <Button onClick={handleSignOut} size='sm'>
+    <Button className='text-md' onClick={handleSignOut}>
       Sign Out
     </Button>
   )
