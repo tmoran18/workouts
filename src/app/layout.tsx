@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Outfit, Source_Sans_3 } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
 
 import './globals.css'
 
@@ -25,7 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${outfit.variable} ${sourceSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
