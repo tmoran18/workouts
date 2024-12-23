@@ -33,9 +33,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className='flex min-h-screen flex-col items-center justify-center p-4'>
+    <div className='p-4'>
       {emailSent ? (
-        <div className='text-center max-w-sm w-full space-y-4'>
+        <div className='text-center w-full space-y-4'>
           <h2 className='text-2xl font-bold'>Check your email!</h2>
           <p className='text-muted-foreground'>
             We sent you a magic link to {email}
@@ -55,10 +55,7 @@ export default function LoginPage() {
           </Button>
         </div>
       ) : (
-        <form
-          onSubmit={handleLogin}
-          className='flex flex-col gap-4 w-full max-w-sm'
-        >
+        <form onSubmit={handleLogin} className='flex flex-col gap-4'>
           <h1 className='text-2xl font-bold text-center'>Sign In</h1>
           <input
             type='email'

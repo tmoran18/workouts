@@ -1,10 +1,10 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { signOut } from '@/utils/supabase/auth'
 import { useRouter } from 'next/navigation'
+import { signOut } from '@/utils/supabase/auth'
+import { Button } from '@/components/ui/button'
 
-export function SignOutButton() {
+export function SignOutButton(props: React.ComponentProps<typeof Button>) {
   const router = useRouter()
 
   const handleSignOut = async () => {
@@ -18,7 +18,7 @@ export function SignOutButton() {
   }
 
   return (
-    <Button className='text-md' onClick={handleSignOut}>
+    <Button className='text-md' onClick={handleSignOut} {...props}>
       Sign Out
     </Button>
   )

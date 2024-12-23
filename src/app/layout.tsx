@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Outfit, Source_Sans_3 } from 'next/font/google'
+
 import './globals.css'
 
 const outfit = Outfit({
