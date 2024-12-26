@@ -10,6 +10,8 @@ import {
 } from './schema'
 import { config } from 'dotenv'
 
+import exerciseData from './seed-data/exercises.json'
+
 config({ path: '.env.local' })
 
 const seedClient = postgres(process.env.DATABASE_URL!, { max: 1 })
@@ -21,34 +23,27 @@ const USER_2_ID = process.env.SEED_USER_2_ID!
 
 async function seed() {
   try {
-    console.log('⏳ Seeding database...')
+    console.log('⏳ Cleaning database...')
 
-    // 1. System exercises (available to all users)
+    // Delete in reverse order of dependencies
+    await db.delete(exerciseLogs)
+    await db.delete(workouts)
+    await db.delete(templateExercises)
+    await db.delete(workoutTemplates)
+    await db.delete(exercises)
+
+    console.log('✨ Database cleaned')
+    console.log('🌱 Seeding database...')
+
+    // 1. System exercises from our JSON file
     const systemExercises = await db
       .insert(exercises)
-      .values([
-        {
-          name: 'Bench Press',
-          category: 'chest',
-          instructions: 'Lie on bench, press weight up',
-          isCustom: false,
+      .values(
+        exerciseData.exercises.map(exercise => ({
+          ...exercise,
           userId: SYSTEM_ID,
-        },
-        {
-          name: 'Squat',
-          category: 'legs',
-          instructions: 'Stand with barbell on shoulders, squat down, stand up',
-          isCustom: false,
-          userId: SYSTEM_ID,
-        },
-        {
-          name: 'Deadlift',
-          category: 'back',
-          instructions: 'Grip bar, keep back straight, lift with legs and back',
-          isCustom: false,
-          userId: SYSTEM_ID,
-        },
-      ])
+        }))
+      )
       .returning()
 
     // 2. Custom exercises for each user
@@ -57,7 +52,8 @@ async function seed() {
       .values([
         {
           name: 'My Custom Push-up',
-          category: 'chest',
+          category: 'bodyweight',
+          bodyPart: 'chest',
           instructions: 'Custom form push-up',
           isCustom: true,
           userId: USER_1_ID,
@@ -70,7 +66,8 @@ async function seed() {
       .values([
         {
           name: 'Special Pull-up',
-          category: 'back',
+          category: 'bodyweight',
+          bodyPart: 'back',
           instructions: 'Wide grip pull-up',
           isCustom: true,
           userId: USER_2_ID,

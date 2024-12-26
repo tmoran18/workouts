@@ -1,0 +1,128 @@
+{
+  "exercises": [
+    {
+      "name": "Bench Press (Barbell)",
+      "bodyPart": "chest",
+      "category": "barbell",
+      "instructions": "Lie on a flat bench, grip the barbell with hands slightly wider than shoulder width. Lower the bar to your chest, then press back up to starting position.",
+      "isCustom": false
+    },
+    {
+      "name": "Deadlift",
+      "bodyPart": "back",
+      "category": "barbell",
+      "instructions": "Stand with feet hip-width apart, bend down and grip the barbell. Keep back straight, chest up, and pull the weight up by extending hips and knees.",
+      "isCustom": false
+    },
+    {
+      "name": "Squat (Barbell)",
+      "bodyPart": "legs",
+      "category": "barbell",
+      "instructions": "Place barbell on upper back, feet shoulder-width apart. Bend knees and hips to lower until thighs are parallel to ground, then return to standing.",
+      "isCustom": false
+    },
+    {
+      "name": "Overhead Press",
+      "bodyPart": "shoulders",
+      "category": "barbell",
+      "instructions": "Stand with barbell at shoulder height, press the weight overhead until arms are fully extended.",
+      "isCustom": false
+    },
+    {
+      "name": "Pull Up",
+      "bodyPart": "back",
+      "category": "bodyweight",
+      "instructions": "Hang from pull-up bar with hands wider than shoulder width, pull yourself up until chin clears the bar.",
+      "isCustom": false
+    },
+    {
+      "name": "Dumbbell Row",
+      "bodyPart": "back",
+      "category": "dumbbell",
+      "instructions": "Place one knee and hand on bench, other foot on ground. Pull dumbbell to hip level, keeping elbow close to body.",
+      "isCustom": false
+    },
+    {
+      "name": "Incline Bench Press (Dumbbell)",
+      "bodyPart": "chest",
+      "category": "dumbbell",
+      "instructions": "Lie on an incline bench, press dumbbells from shoulder level until arms are extended.",
+      "isCustom": false
+    },
+    {
+      "name": "Romanian Deadlift",
+      "bodyPart": "legs",
+      "category": "barbell",
+      "instructions": "Hold barbell in front of thighs, hinge at hips while keeping legs relatively straight, lower weight along thighs.",
+      "isCustom": false
+    },
+    {
+      "name": "Lateral Raise",
+      "bodyPart": "shoulders",
+      "category": "dumbbell",
+      "instructions": "Stand holding dumbbells at sides, raise arms out to sides until parallel with ground.",
+      "isCustom": false
+    },
+    {
+      "name": "Tricep Pushdown",
+      "bodyPart": "arms",
+      "category": "cable",
+      "instructions": "Using cable machine, push handle down from chest height until arms are fully extended.",
+      "isCustom": false
+    },
+    {
+      "name": "Bicep Curl (Barbell)",
+      "bodyPart": "arms",
+      "category": "barbell",
+      "instructions": "Stand holding barbell with underhand grip, curl weight up to shoulder level while keeping upper arms still.",
+      "isCustom": false
+    },
+    {
+      "name": "Leg Press",
+      "bodyPart": "legs",
+      "category": "machine",
+      "instructions": "Sit in leg press machine, push platform away by extending knees and hips.",
+      "isCustom": false
+    },
+    {
+      "name": "Face Pull",
+      "bodyPart": "shoulders",
+      "category": "cable",
+      "instructions": "Using rope attachment on cable machine, pull towards face while keeping upper arms parallel to ground.",
+      "isCustom": false
+    },
+    {
+      "name": "Dips",
+      "bodyPart": "chest",
+      "category": "bodyweight",
+      "instructions": "Support body on dip bars, lower until upper arms are parallel to ground, then push back up.",
+      "isCustom": false
+    },
+    {
+      "name": "Leg Extension",
+      "bodyPart": "legs",
+      "category": "machine",
+      "instructions": "Sit in leg extension machine, extend knees to raise weight until legs are straight.",
+      "isCustom": false
+    }
+  ],
+  "categories": [
+    "barbell",
+    "dumbbell",
+    "machine",
+    "cable",
+    "bodyweight",
+    "kettlebell",
+    "resistance_band",
+    "smith_machine"
+  ],
+  "bodyParts": [
+    "chest",
+    "back",
+    "legs",
+    "shoulders",
+    "arms",
+    "core",
+    "cardio"
+  ]
+}
