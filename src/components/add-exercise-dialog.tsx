@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { PlusIcon } from 'lucide-react'
+import { PlusIcon, X } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
@@ -15,6 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from '@/components/ui/dialog'
 import {
   Select,
@@ -58,9 +59,14 @@ export function AddExerciseDialog() {
           Add Exercise
         </Button>
       </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
+      <DialogContent className='w-[calc(100%-2rem)] rounded-lg'>
+        <DialogHeader className='flex flex-row justify-between items-center'>
           <DialogTitle>Add New Exercise</DialogTitle>
+          <DialogClose asChild>
+            <Button size='icon' variant='ghost' className='!mt-0'>
+              <X />
+            </Button>
+          </DialogClose>
         </DialogHeader>
         <form onSubmit={handleSubmit} className='space-y-4'>
           <div>
