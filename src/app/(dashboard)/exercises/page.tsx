@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/utils/supabase/server'
-import { exerciseIconsMap, defaultExerciseIcon } from '@/constants'
+import { SearchInput } from '@/components/search-input-exercise'
+import { ExerciseList } from '@/components/exercise-list'
+import { BodyPartFilter } from '@/components/body-part-filter'
+import { CategoryFilter } from '@/components/category-filter'
 
 export default async function ExercisesPage() {
   const supabase = await createClient()
@@ -10,29 +13,19 @@ export default async function ExercisesPage() {
   return (
     <section className=''>
       <header className='flex justify-between items-center gap-4'>
-        <h1 className='text-xl font-bold font-heading'>Exercises</h1>
+        <h1 className='text-2xl font-bold font-heading'>Exercises</h1>
         <div className='flex flex-col gap-4'>
           <Button>Add Exercise</Button>
         </div>
       </header>
-      <div className='flex flex-col mt-8'>
-        {exercises?.map(exercise => {
-          const IconComponent =
-            exerciseIconsMap[exercise.name] || defaultExerciseIcon
-
-          return (
-            <div key={exercise.id} className='border-b px-4 py-2 rounded'>
-              <div className='flex items-center gap-6'>
-                <IconComponent className='text-primary w-10 h-10' />
-                <div className='flex flex-col gap-1'>
-                  <h3 className='font-bold'>{exercise.name}</h3>
-                  <p>{exercise.body_part}</p>
-                </div>
-              </div>
-            </div>
-          )
-        })}
+      <div className='mt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full'>
+        <SearchInput />
+        <div className='flex gap-2'>
+          <BodyPartFilter />
+          <CategoryFilter />
+        </div>
       </div>
+      <ExerciseList exercises={exercises ?? []} />
     </section>
   )
 }
