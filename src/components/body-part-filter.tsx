@@ -3,22 +3,13 @@
 import { ChevronDown } from 'lucide-react'
 import { useExerciseStore } from '@/stores'
 import { Button } from '@/components/ui/button'
+import { bodyParts } from '@/constants/exercises'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-const bodyParts = [
-  'chest',
-  'back',
-  'legs',
-  'shoulders',
-  'arms',
-  'core',
-  'cardio',
-] as const
 
 export function BodyPartFilter() {
   const { filters, setBodyPart } = useExerciseStore()

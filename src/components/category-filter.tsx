@@ -9,17 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-const categories = [
-  'barbell',
-  'dumbbell',
-  'machine',
-  'cable',
-  'bodyweight',
-  'kettlebell',
-  'resistance_band',
-  'smith_machine',
-] as const
+import { categories } from '@/constants/exercises'
 
 export function CategoryFilter() {
   const { filters, setCategory } = useExerciseStore()

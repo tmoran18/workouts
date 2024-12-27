@@ -4,6 +4,7 @@ import { SearchInput } from '@/components/search-input-exercise'
 import { ExerciseList } from '@/components/exercise-list'
 import { BodyPartFilter } from '@/components/body-part-filter'
 import { CategoryFilter } from '@/components/category-filter'
+import { AddExerciseDialog } from '@/components/add-exercise-dialog'
 
 export default async function ExercisesPage() {
   const supabase = await createClient()
@@ -15,7 +16,7 @@ export default async function ExercisesPage() {
       <header className='flex justify-between items-center gap-4'>
         <h1 className='text-2xl font-bold font-heading'>Exercises</h1>
         <div className='flex flex-col gap-4'>
-          <Button>Add Exercise</Button>
+          <AddExerciseDialog />
         </div>
       </header>
       <div className='mt-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 w-full'>
