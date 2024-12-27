@@ -1,18 +1,9 @@
 'use client'
 
 import { useExerciseStore } from '@/stores'
+import { ExerciseListProps } from '@/types'
 import { exerciseIconsMap, defaultExerciseIcon } from '@/constants'
-
-interface Exercise {
-  id: string
-  name: string
-  body_part: string
-  category: string
-}
-
-interface ExerciseListProps {
-  exercises: Exercise[]
-}
+import { groupExercisesByLetter } from '@/lib/utils'
 
 export function ExerciseList({ exercises }: ExerciseListProps) {
   const { filters } = useExerciseStore() // Get the filters object
@@ -27,24 +18,33 @@ export function ExerciseList({ exercises }: ExerciseListProps) {
     return matchesSearch && matchesBodyPart && matchesCategory
   })
 
-  return (
-    <div className='flex flex-col mt-8 gap-2'>
-      {filteredExercises.map(exercise => {
-        const IconComponent =
-          exerciseIconsMap[exercise.name] || defaultExerciseIcon
+  const groupedExercises = groupExercisesByLetter(filteredExercises)
 
-        return (
-          <div key={exercise.id} className='border px-4 py-2 rounded'>
-            <div className='flex items-center gap-6'>
-              <IconComponent className='text-primary w-10 h-10' />
-              <div className='flex flex-col gap-1'>
-                <h3 className='font-bold'>{exercise.name}</h3>
-                <p>{exercise.body_part}</p>
-              </div>
-            </div>
+  return (
+    <div className='flex flex-col mt-8 gap-8'>
+      {Object.entries(groupedExercises).map(([letter, exercises]) => (
+        <div key={letter} className='flex flex-col gap-2'>
+          <h2 className='text-lg font-light text-primary'>{letter}</h2>
+          <div className='flex flex-col gap-2'>
+            {exercises.map(exercise => {
+              const IconComponent =
+                exerciseIconsMap[exercise.name] || defaultExerciseIcon
+
+              return (
+                <div key={exercise.id} className='border px-4 py-2 rounded'>
+                  <div className='flex items-center gap-6'>
+                    <IconComponent className='text-primary w-10 h-10' />
+                    <div className='flex flex-col gap-1'>
+                      <h3 className='font-bold'>{exercise.name}</h3>
+                      <p>{exercise.body_part}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
-        )
-      })}
+        </div>
+      ))}
     </div>
   )
 }
