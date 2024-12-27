@@ -21,7 +21,9 @@ export default function RootLayout({
       <AppSidebar />
       <SidebarInset>
         <Header />
-        <main className='flex flex-1 flex-col gap-4 p-4'>{children}</main>
+        <main className='flex flex-1 flex-col gap-4 p-4 pb-24 md:pb-4'>
+          {children}
+        </main>
       </SidebarInset>
       <MobileNav />
     </SidebarProvider>
