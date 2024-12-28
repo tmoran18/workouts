@@ -3,20 +3,26 @@ import { createClient } from '@/utils/supabase/server'
 export default async function Dashboard() {
   const supabase = await createClient()
 
-  // Get current user
+  // Get current user first as we need this for other queries
   const {
     data: { user },
   } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
 
-  // Fetch all data
-  const { data: exercises } = await supabase.from('exercises').select('*')
-  const { data: templates } = await supabase
-    .from('workout_templates')
-    .select('*')
-  const { data: workouts } = await supabase.from('workouts').select('*')
-  const { data: exerciseLogs } = await supabase
-    .from('exercise_logs')
-    .select('*')
+  // Fetch all data in parallel
+  const [exercisesData, templatesData, workoutsData, exerciseLogsData] =
+    await Promise.all([
+      supabase.from('exercises').select('*'),
+      supabase.from('workout_templates').select('*'),
+      supabase.from('workouts').select('*'),
+      supabase.from('exercise_logs').select('*'),
+    ])
+
+  // Destructure the data
+  const { data: exercises } = exercisesData
+  const { data: templates } = templatesData
+  const { data: workouts } = workoutsData
+  const { data: exerciseLogs } = exerciseLogsData
 
   return (
     <main className='p-8'>
