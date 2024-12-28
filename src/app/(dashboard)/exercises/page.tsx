@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Suspense } from 'react'
 import { createClient } from '@/utils/supabase/server'
 import { SearchInput } from '@/components/search-input-exercise'
 import { ExerciseList } from '@/components/exercise-list'
@@ -6,11 +7,16 @@ import { BodyPartFilter } from '@/components/body-part-filter'
 import { CategoryFilter } from '@/components/category-filter'
 import { AddExerciseDialog } from '@/components/add-exercise-dialog'
 
-export default async function ExercisesPage() {
+// Cache this route for 1 hour and revalidate on-demand
+export const revalidate = 3600
+
+async function ExerciseData() {
   const supabase = await createClient()
-
   const { data: exercises } = await supabase.from('exercises').select('*')
+  return <ExerciseList exercises={exercises ?? []} />
+}
 
+export default async function ExercisesPage() {
   return (
     <section className=''>
       <header className='flex justify-between items-center gap-4'>
@@ -26,7 +32,9 @@ export default async function ExercisesPage() {
           <CategoryFilter />
         </div>
       </div>
-      <ExerciseList exercises={exercises ?? []} />
+      <Suspense fallback={<div>Loading exercises...</div>}>
+        <ExerciseData />
+      </Suspense>
     </section>
   )
 }
