@@ -11,7 +11,7 @@ export interface Exercise {
   body_part: string
   category: string
   instructions?: string
-  isCustom?: boolean
+  is_custom?: boolean
 }
 
 export type ExerciseCategory =

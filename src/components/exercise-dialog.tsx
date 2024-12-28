@@ -1,6 +1,6 @@
 'use client'
 
-import { Edit, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { Exercise } from '@/types'
 import { Button } from '@/components/ui/button'
 import { exerciseIconsMap, defaultExerciseIcon } from '@/constants'
@@ -30,14 +30,11 @@ export function ExerciseDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className='max-w-3xl w-[calc(100%-2rem)] rounded-lg'>
         <DialogHeader className='flex flex-row justify-between items-center'>
-          <Button size='icon' variant='ghost' className='mt-2'>
-            <Edit />
-          </Button>
-          <DialogTitle className='text-md md:text-xl font-bold text-center'>
+          <DialogTitle className='!mt-0 text-md md:text-xl font-bold text-center'>
             {exercise.name}
           </DialogTitle>
           <DialogClose asChild>
-            <Button size='icon' variant='ghost' className='mt-2'>
+            <Button size='icon' variant='outline' className='!mt-0'>
               <X />
             </Button>
           </DialogClose>
