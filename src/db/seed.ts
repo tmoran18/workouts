@@ -11,6 +11,8 @@ import {
 import { config } from 'dotenv'
 
 import exerciseData from './seed-data/exercises.json'
+import templateData from './seed-data/templates.json'
+import workoutData from './seed-data/workouts.json'
 
 config({ path: '.env.local' })
 
@@ -20,6 +22,23 @@ const db = drizzle(seedClient, { schema })
 const SYSTEM_ID = process.env.SYSTEM_USER_ID!
 const USER_1_ID = process.env.SEED_USER_1_ID!
 const USER_2_ID = process.env.SEED_USER_2_ID!
+
+function getDateFromRelative(relativeDate: string): Date {
+  const now = new Date()
+
+  if (relativeDate.startsWith('-')) {
+    const [days, time] = relativeDate.split(' ')
+    const [hours, minutes] = time.split(':')
+
+    const date = new Date(now)
+    date.setDate(date.getDate() + parseInt(days))
+    date.setHours(parseInt(hours), parseInt(minutes), 0, 0)
+
+    return date
+  }
+
+  return new Date(relativeDate)
+}
 
 async function seed() {
   try {
@@ -75,123 +94,66 @@ async function seed() {
       ])
       .returning()
 
-    // 3. Workout templates for each user
-    const user1Template = await db
-      .insert(workoutTemplates)
-      .values({
-        name: 'Push Day',
-        description: 'Chest and triceps focus',
-        userId: USER_1_ID,
-      })
-      .returning()
-
-    const user2Template = await db
-      .insert(workoutTemplates)
-      .values({
-        name: 'Pull Day',
-        description: 'Back and biceps focus',
-        userId: USER_2_ID,
-      })
-      .returning()
+    // 3. Workout templates for user 2
+    const createdTemplates = await Promise.all(
+      templateData.templates.map(template =>
+        db
+          .insert(workoutTemplates)
+          .values({
+            name: template.name,
+            description: template.description,
+            userId: USER_2_ID,
+          })
+          .returning()
+      )
+    )
 
     // 4. Template exercises
-    await db.insert(templateExercises).values([
-      {
-        templateId: user1Template[0].id,
-        exerciseId: systemExercises[0].id, // Bench Press
-        order: 1,
-        sets: 3,
-      },
-      {
-        templateId: user1Template[0].id,
-        exerciseId: user1Exercises[0].id, // Custom Push-up
-        order: 2,
-        sets: 4,
-      },
-    ])
+    for (let i = 0; i < templateData.templates.length; i++) {
+      const template = templateData.templates[i]
+      await db.insert(templateExercises).values(
+        template.exercises.map(exercise => ({
+          templateId: createdTemplates[i][0].id,
+          exerciseId: systemExercises[exercise.exerciseIndex].id,
+          order: exercise.order,
+          sets: exercise.sets,
+        }))
+      )
+    }
 
-    await db.insert(templateExercises).values([
-      {
-        templateId: user2Template[0].id,
-        exerciseId: systemExercises[2].id, // Deadlift
-        order: 1,
-        sets: 5,
-      },
-      {
-        templateId: user2Template[0].id,
-        exerciseId: user2Exercises[0].id, // Special Pull-up
-        order: 2,
-        sets: 3,
-      },
-    ])
+    // 5 & 6. Completed workouts and exercise logs
+    for (const workout of workoutData.workouts) {
+      const startedAt = getDateFromRelative(workout.startedAt)
+      const completedAt = getDateFromRelative(workout.completedAt)
 
-    // 5. Completed workouts
-    const user1Workout = await db
-      .insert(workouts)
-      .values({
-        userId: USER_1_ID,
-        templateId: user1Template[0].id,
-        name: 'Morning Push Session',
-        notes: 'Felt strong today',
-        startedAt: new Date('2024-03-20T08:00:00'),
-        completedAt: new Date('2024-03-20T09:15:00'),
-      })
-      .returning()
+      const workoutRecord = await db
+        .insert(workouts)
+        .values({
+          userId: USER_2_ID,
+          templateId: createdTemplates[workout.templateIndex][0].id,
+          name: workout.name,
+          notes: workout.notes,
+          startedAt,
+          completedAt,
+        })
+        .returning()
 
-    const user2Workout = await db
-      .insert(workouts)
-      .values({
-        userId: USER_2_ID,
-        templateId: user2Template[0].id,
-        name: 'Evening Pull Session',
-        notes: 'New PR on deadlift',
-        startedAt: new Date('2024-03-20T18:00:00'),
-        completedAt: new Date('2024-03-20T19:30:00'),
-      })
-      .returning()
+      for (const exercise of workout.exercises) {
+        const exerciseId = systemExercises[exercise.exerciseIndex].id
 
-    // 6. Exercise logs
-    await db.insert(exerciseLogs).values([
-      {
-        workoutId: user1Workout[0].id,
-        exerciseId: systemExercises[0].id,
-        order: 1,
-        weight: 185,
-        reps: 8,
-        rpe: 8,
-        notes: 'Felt good',
-      },
-      {
-        workoutId: user1Workout[0].id,
-        exerciseId: user1Exercises[0].id,
-        order: 2,
-        weight: 0,
-        reps: 12,
-        rpe: 7,
-        notes: 'Easy set',
-      },
-    ])
+        const exerciseLogValues = exercise.sets.map((set, index) => ({
+          workoutId: workoutRecord[0].id,
+          exerciseId,
+          order: index + 1,
+          weight: set.weight,
+          reps: set.reps,
+          rpe: set.rpe,
+          notes: set.notes,
+        }))
 
-    await db.insert(exerciseLogs).values([
-      {
-        workoutId: user2Workout[0].id,
-        exerciseId: systemExercises[2].id,
-        order: 1,
-        weight: 315,
-        reps: 5,
-        rpe: 9,
-        notes: 'New PR!',
-      },
-      {
-        workoutId: user2Workout[0].id,
-        exerciseId: user2Exercises[0].id,
-        order: 2,
-        weight: 0,
-        reps: 10,
-        rpe: 8,
-        notes: 'Good form',
-      },
-    ])
+        await db.insert(exerciseLogs).values(exerciseLogValues)
+      }
+    }
 
     console.log('✅ Seeding completed')
   } catch (error) {

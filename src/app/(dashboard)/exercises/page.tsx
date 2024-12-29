@@ -6,6 +6,7 @@ import { ExerciseList } from '@/components/exercise-list'
 import { BodyPartFilter } from '@/components/body-part-filter'
 import { CategoryFilter } from '@/components/category-filter'
 import { AddExerciseDialog } from '@/components/add-exercise-dialog'
+import { ExerciseSkeleton } from './_components/exercise-skeleton'
 
 // Cache this route for 1 hour and revalidate on-demand
 export const revalidate = 3600
@@ -32,7 +33,7 @@ export default async function ExercisesPage() {
           <CategoryFilter />
         </div>
       </div>
-      <Suspense fallback={<div>Loading exercises...</div>}>
+      <Suspense fallback={<ExerciseSkeleton />}>
         <ExerciseData />
       </Suspense>
     </section>

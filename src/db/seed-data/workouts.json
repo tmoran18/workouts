@@ -1,0 +1,103 @@
+{
+  "workouts": [
+    {
+      "templateIndex": 0,
+      "name": "Morning Push Session",
+      "notes": "Good energy today",
+      "startedAt": "-1 08:00",
+      "completedAt": "-1 09:15",
+      "exercises": [
+        {
+          "exerciseIndex": 0,
+          "sets": [
+            { "weight": 80, "reps": 12, "rpe": 7, "notes": "Warm up weight" },
+            { "weight": 80, "reps": 12, "rpe": 8, "notes": "Good form" },
+            { "weight": 80, "reps": 12, "rpe": 8, "notes": "Starting to feel it" },
+            { "weight": 80, "reps": 12, "rpe": 9, "notes": "Last set best set" }
+          ]
+        },
+        {
+          "exerciseIndex": 6,
+          "sets": [
+            { "weight": 30, "reps": 12, "rpe": 7, "notes": "Each dumbbell" },
+            { "weight": 30, "reps": 12, "rpe": 7, "notes": "Keeping form strict" },
+            { "weight": 30, "reps": 12, "rpe": 8, "notes": "Good squeeze" },
+            { "weight": 30, "reps": 12, "rpe": 8, "notes": "Solid set" }
+          ]
+        },
+        {
+          "exerciseIndex": 3,
+          "sets": [
+            { "weight": 45, "reps": 12, "rpe": 7, "notes": "Light weight" },
+            { "weight": 45, "reps": 12, "rpe": 8, "notes": "Feeling strong" },
+            { "weight": 45, "reps": 12, "rpe": 8, "notes": "Good control" },
+            { "weight": 45, "reps": 12, "rpe": 9, "notes": "Shoulders pumped" }
+          ]
+        },
+        {
+          "exerciseIndex": 9,
+          "sets": [
+            { "weight": 25, "reps": 12, "rpe": 7, "notes": "Warming up" },
+            { "weight": 25, "reps": 12, "rpe": 7, "notes": "Good squeeze" },
+            { "weight": 25, "reps": 12, "rpe": 8, "notes": "Feeling it" },
+            { "weight": 25, "reps": 12, "rpe": 8, "notes": "Arms done" }
+          ]
+        },
+        {
+          "exerciseIndex": 14,
+          "sets": [
+            { "weight": 0, "reps": 12, "rpe": 7, "notes": "Bodyweight" },
+            { "weight": 0, "reps": 12, "rpe": 7, "notes": "Clean reps" },
+            { "weight": 0, "reps": 12, "rpe": 8, "notes": "Getting harder" },
+            { "weight": 0, "reps": 12, "rpe": 9, "notes": "Chest finished" }
+          ]
+        }
+      ]
+    },
+    {
+      "templateIndex": 1,
+      "name": "Back Day",
+      "notes": "New deadlift PR",
+      "startedAt": "-2 16:00",
+      "completedAt": "-2 17:30",
+      "exercises": [
+        {
+          "exerciseIndex": 1,
+          "sets": [
+            { "weight": 140, "reps": 12, "rpe": 7, "notes": "Warm up" },
+            { "weight": 140, "reps": 12, "rpe": 8, "notes": "Form check" },
+            { "weight": 140, "reps": 12, "rpe": 8, "notes": "Strong pull" },
+            { "weight": 140, "reps": 12, "rpe": 9, "notes": "Back pumped" }
+          ]
+        },
+        {
+          "exerciseIndex": 4,
+          "sets": [
+            { "weight": 0, "reps": 12, "rpe": 7, "notes": "Bodyweight" },
+            { "weight": 0, "reps": 12, "rpe": 8, "notes": "Good control" },
+            { "weight": 0, "reps": 12, "rpe": 8, "notes": "Full ROM" },
+            { "weight": 0, "reps": 12, "rpe": 9, "notes": "Last few tough" }
+          ]
+        }
+      ]
+    },
+    {
+      "templateIndex": 2,
+      "name": "Leg Session",
+      "notes": "Solid volume day",
+      "startedAt": "-3 07:00",
+      "completedAt": "-3 08:30",
+      "exercises": [
+        {
+          "exerciseIndex": 2,
+          "sets": [
+            { "weight": 100, "reps": 12, "rpe": 7, "notes": "Warming up" },
+            { "weight": 100, "reps": 12, "rpe": 8, "notes": "Deep squats" },
+            { "weight": 100, "reps": 12, "rpe": 8, "notes": "Staying tight" },
+            { "weight": 100, "reps": 12, "rpe": 9, "notes": "Legs shaking" }
+          ]
+        }
+      ]
+    }
+  ]
+}

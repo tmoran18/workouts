@@ -7,6 +7,8 @@ import {
   boolean,
 } from 'drizzle-orm/pg-core'
 
+import { relations } from 'drizzle-orm'
+
 // Exercise library
 export const exercises = pgTable('exercises', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -69,3 +71,36 @@ export const exerciseLogs = pgTable('exercise_logs', {
   notes: text('notes'),
   createdAt: timestamp('created_at').defaultNow(),
 })
+
+export const workoutsRelations = relations(workouts, ({ one }) => ({
+  template: one(workoutTemplates, {
+    fields: [workouts.templateId],
+    references: [workoutTemplates.id],
+  }),
+}))
+
+export const workoutTemplatesRelations = relations(
+  workoutTemplates,
+  ({ many }) => ({
+    templateExercises: many(templateExercises),
+    workouts: many(workouts),
+  })
+)
+
+export const templateExercisesRelations = relations(
+  templateExercises,
+  ({ one }) => ({
+    template: one(workoutTemplates, {
+      fields: [templateExercises.templateId],
+      references: [workoutTemplates.id],
+    }),
+    exercise: one(exercises, {
+      fields: [templateExercises.exerciseId],
+      references: [exercises.id],
+    }),
+  })
+)
+
+export const exercisesRelations = relations(exercises, ({ many }) => ({
+  templateExercises: many(templateExercises),
+}))

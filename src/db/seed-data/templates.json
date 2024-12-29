@@ -1,0 +1,59 @@
+{
+  "templates": [
+    {
+      "name": "Push Day",
+      "description": "Chest, shoulders, and triceps focus",
+      "exercises": [
+        { "exerciseIndex": 0, "sets": 4, "order": 1 },
+        { "exerciseIndex": 6, "sets": 4, "order": 2 },
+        { "exerciseIndex": 3, "sets": 4, "order": 3 },
+        { "exerciseIndex": 9, "sets": 4, "order": 4 },
+        { "exerciseIndex": 14, "sets": 4, "order": 5 }
+      ]
+    },
+    {
+      "name": "Pull Day",
+      "description": "Back and biceps focus",
+      "exercises": [
+        { "exerciseIndex": 1, "sets": 4, "order": 1 },  
+        { "exerciseIndex": 4, "sets": 4, "order": 2 }, 
+        { "exerciseIndex": 5, "sets": 4, "order": 3 },
+        { "exerciseIndex": 10, "sets": 4, "order": 4 },
+        { "exerciseIndex": 12, "sets": 4, "order": 5 }
+      ]
+    },
+    {
+      "name": "Leg Day",
+      "description": "Lower body focus",
+      "exercises": [
+        { "exerciseIndex": 2, "sets": 4, "order": 1 },
+        { "exerciseIndex": 7, "sets": 4, "order": 2 },
+        { "exerciseIndex": 11, "sets": 4, "order": 3 },
+        { "exerciseIndex": 14, "sets": 4, "order": 4 },
+        { "exerciseIndex": 2, "sets": 4, "order": 5}
+      ]
+    },
+    {
+      "name": "Upper Body",
+      "description": "Full upper body workout",
+      "exercises": [
+        { "exerciseIndex": 0, "sets": 4, "order": 1 }, 
+        { "exerciseIndex": 1, "sets": 4, "order": 2 }, 
+        { "exerciseIndex": 3, "sets": 4, "order": 3 }, 
+        { "exerciseIndex": 4, "sets": 4, "order": 4 }, 
+        { "exerciseIndex": 9, "sets": 4, "order": 5 } 
+      ]
+    },
+    {
+      "name": "Full Body",
+      "description": "Complete body workout",
+      "exercises": [
+        { "exerciseIndex": 2, "sets": 4, "order": 1 }, 
+        { "exerciseIndex": 0, "sets": 4, "order": 2 },
+        { "exerciseIndex": 1, "sets": 4, "order": 3 }, 
+        { "exerciseIndex": 3, "sets": 4, "order": 4 }, 
+        { "exerciseIndex": 10, "sets": 4, "order": 5 } 
+      ]
+    }
+  ]
+}
