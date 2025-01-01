@@ -3,15 +3,10 @@ export interface Exercise {
   name: string
   body_part: string
   category: string
-}
-
-export interface Exercise {
-  id: string
-  name: string
-  body_part: string
-  category: string
-  instructions?: string
-  is_custom?: boolean
+  instructions: string | null
+  is_custom: boolean | null
+  userId: string
+  createdAt: Date | null
 }
 
 export type ExerciseCategory =

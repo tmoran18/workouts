@@ -2,7 +2,16 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
-import { Exercise } from '@/types'
+import { BodyPart, Exercise, ExerciseCategory } from '@/types'
+
+// Create a type for updates that only includes editable fields
+type ExerciseUpdate = {
+  id: string
+  name: string
+  body_part: BodyPart
+  category: ExerciseCategory
+  instructions: string | null
+}
 
 export async function addExercise(exercise: Omit<Exercise, 'id'>) {
   const supabase = await createClient()
@@ -30,7 +39,7 @@ export async function addExercise(exercise: Omit<Exercise, 'id'>) {
   return data
 }
 
-export async function updateExercise(exercise: Exercise) {
+export async function updateExercise(exercise: ExerciseUpdate) {
   const supabase = await createClient()
 
   const { data, error } = await supabase

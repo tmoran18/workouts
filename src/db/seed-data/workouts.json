@@ -6,6 +6,7 @@
       "notes": "Good energy today",
       "startedAt": "-1 08:00",
       "completedAt": "-1 09:15",
+      "status": "completed",
       "exercises": [
         {
           "exerciseIndex": 0,
@@ -60,6 +61,7 @@
       "notes": "New deadlift PR",
       "startedAt": "-2 16:00",
       "completedAt": "-2 17:30",
+      "status": "completed",
       "exercises": [
         {
           "exerciseIndex": 1,
@@ -87,6 +89,7 @@
       "notes": "Solid volume day",
       "startedAt": "-3 07:00",
       "completedAt": "-3 08:30",
+      "status": "completed",
       "exercises": [
         {
           "exerciseIndex": 2,

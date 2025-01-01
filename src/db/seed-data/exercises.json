@@ -2,108 +2,108 @@
   "exercises": [
     {
       "name": "Bench Press (Barbell)",
-      "bodyPart": "chest",
+      "body_part": "chest",
       "category": "barbell",
       "instructions": "Lie on a flat bench, grip the barbell with hands slightly wider than shoulder width. Lower the bar to your chest, then press back up to starting position.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Deadlift",
-      "bodyPart": "back",
+      "body_part": "back",
       "category": "barbell",
       "instructions": "Stand with feet hip-width apart, bend down and grip the barbell. Keep back straight, chest up, and pull the weight up by extending hips and knees.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Squat (Barbell)",
-      "bodyPart": "legs",
+      "body_part": "legs",
       "category": "barbell",
       "instructions": "Place barbell on upper back, feet shoulder-width apart. Bend knees and hips to lower until thighs are parallel to ground, then return to standing.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Overhead Press",
-      "bodyPart": "shoulders",
+      "body_part": "shoulders",
       "category": "barbell",
       "instructions": "Stand with barbell at shoulder height, press the weight overhead until arms are fully extended.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Pull Up",
-      "bodyPart": "back",
+      "body_part": "back",
       "category": "bodyweight",
       "instructions": "Hang from pull-up bar with hands wider than shoulder width, pull yourself up until chin clears the bar.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Dumbbell Row",
-      "bodyPart": "back",
+      "body_part": "back",
       "category": "dumbbell",
       "instructions": "Place one knee and hand on bench, other foot on ground. Pull dumbbell to hip level, keeping elbow close to body.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Incline Bench Press (Dumbbell)",
-      "bodyPart": "chest",
+      "body_part": "chest",
       "category": "dumbbell",
       "instructions": "Lie on an incline bench, press dumbbells from shoulder level until arms are extended.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Romanian Deadlift",
-      "bodyPart": "legs",
+      "body_part": "legs",
       "category": "barbell",
       "instructions": "Hold barbell in front of thighs, hinge at hips while keeping legs relatively straight, lower weight along thighs.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Lateral Raise",
-      "bodyPart": "shoulders",
+      "body_part": "shoulders",
       "category": "dumbbell",
       "instructions": "Stand holding dumbbells at sides, raise arms out to sides until parallel with ground.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Tricep Pushdown",
-      "bodyPart": "arms",
+      "body_part": "arms",
       "category": "cable",
       "instructions": "Using cable machine, push handle down from chest height until arms are fully extended.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Bicep Curl (Barbell)",
-      "bodyPart": "arms",
+      "body_part": "arms",
       "category": "barbell",
       "instructions": "Stand holding barbell with underhand grip, curl weight up to shoulder level while keeping upper arms still.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Leg Press",
-      "bodyPart": "legs",
+      "body_part": "legs",
       "category": "machine",
       "instructions": "Sit in leg press machine, push platform away by extending knees and hips.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Face Pull",
-      "bodyPart": "shoulders",
+      "body_part": "shoulders",
       "category": "cable",
       "instructions": "Using rope attachment on cable machine, pull towards face while keeping upper arms parallel to ground.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Dips",
-      "bodyPart": "chest",
+      "body_part": "chest",
       "category": "bodyweight",
       "instructions": "Support body on dip bars, lower until upper arms are parallel to ground, then push back up.",
-      "isCustom": false
+      "is_custom": false
     },
     {
       "name": "Leg Extension",
-      "bodyPart": "legs",
+      "body_part": "legs",
       "category": "machine",
       "instructions": "Sit in leg extension machine, extend knees to raise weight until legs are straight.",
-      "isCustom": false
+      "is_custom": false
     }
   ],
   "categories": [
@@ -116,7 +116,7 @@
     "resistance_band",
     "smith_machine"
   ],
-  "bodyParts": [
+  "body_parts": [
     "chest",
     "back",
     "legs",

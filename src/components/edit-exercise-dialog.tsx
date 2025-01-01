@@ -127,7 +127,7 @@ export function EditExerciseDialog({
             <Textarea
               id='instructions'
               name='instructions'
-              defaultValue={exercise.instructions}
+              defaultValue={exercise.instructions || ''}
             />
           </div>
           <Button type='submit' disabled={loading}>

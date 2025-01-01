@@ -65,35 +65,6 @@ async function seed() {
       )
       .returning()
 
-    // 2. Custom exercises for each user
-    const user1Exercises = await db
-      .insert(exercises)
-      .values([
-        {
-          name: 'My Custom Push-up',
-          category: 'bodyweight',
-          bodyPart: 'chest',
-          instructions: 'Custom form push-up',
-          isCustom: true,
-          userId: USER_1_ID,
-        },
-      ])
-      .returning()
-
-    const user2Exercises = await db
-      .insert(exercises)
-      .values([
-        {
-          name: 'Special Pull-up',
-          category: 'bodyweight',
-          bodyPart: 'back',
-          instructions: 'Wide grip pull-up',
-          isCustom: true,
-          userId: USER_2_ID,
-        },
-      ])
-      .returning()
-
     // 3. Workout templates for user 2
     const createdTemplates = await Promise.all(
       templateData.templates.map(template =>
@@ -135,6 +106,7 @@ async function seed() {
           notes: workout.notes,
           startedAt,
           completedAt,
+          status: 'completed',
         })
         .returning()
 
@@ -149,6 +121,9 @@ async function seed() {
           reps: set.reps,
           rpe: set.rpe,
           notes: set.notes,
+          setCount: exercise.sets.length,
+          currentSetIndex: exercise.sets.length - 1, // Points to last set since completed
+          isComplete: true, // All sets are complete in seed data
         }))
 
         await db.insert(exerciseLogs).values(exerciseLogValues)
